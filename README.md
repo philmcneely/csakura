@@ -264,6 +264,11 @@ current day is corrected on the next run and repeated runs cannot double-count.
   to your own background colour, and `-H none` leaves it unpainted so only the
   blossom is shaded.
 
+## Author
+
+Made by **Kodi Alex** ([@realstrawhat](https://github.com/realstrawhat)), a UX designer and developer in Berlin.
+More about csakura and my other work: [kodialex.com](https://kodialex.com/project-csakura)
+
 ## Attribution
 
 If you use csakura, please credit **realstrawhat**  
