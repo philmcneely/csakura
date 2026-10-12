@@ -1,8 +1,8 @@
 class Csakura < Formula
   desc "Sakura tree with falling petals for your terminal"
   homepage "https://github.com/realstrawhat/csakura"
-  url "https://github.com/realstrawhat/csakura/archive/refs/tags/v2.1.0.tar.gz"
-  sha256 "73ce581391c569a7d7c512189d14f8cb1994673de2c8df9239a5700d6368202f"
+  url "https://github.com/realstrawhat/csakura/archive/refs/tags/v3.0.0.tar.gz"
+  sha256 "29278bc4101d3da9d090db9d4c3dd715502d3b3339454a4b0c9d0951e33a5cfa"
   license "MIT"
   head "https://github.com/realstrawhat/csakura.git", branch: "main"
 
