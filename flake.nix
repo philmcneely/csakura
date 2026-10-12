@@ -17,7 +17,7 @@
       packages = forAllSystems (pkgs: {
         csakura = pkgs.stdenv.mkDerivation {
           pname = "csakura";
-          version = "2.0.0";
+          version = "3.0.0";
 
           src = self;
 

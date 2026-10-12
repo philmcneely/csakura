@@ -1,4 +1,4 @@
-# csakura 2.1 🌸
+# csakura 3.0 🌸
 
 [![clones](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Frealstrawhat%2Fcsakura%2Ftraffic-data%2Ftraffic.json&query=%24.clones.total&label=clones&color=f76fae&style=flat-square)](#clone-tracking)
 [![stars](https://img.shields.io/github/stars/realstrawhat/csakura?label=stars&color=f76fae&style=flat-square)](https://github.com/realstrawhat/csakura/stargazers)
@@ -10,13 +10,32 @@ A sakura tree with falling petals for your terminal — in the spirit of
 ![csakura preview](assets/preview.png)
 
 - Procedurally grown cherry-blossom tree (different every run, press `r` to regrow)
+- Three cherry forms: the spreading somei-yoshino, a bush-form cherry in full
+  bloom with its crown closed into one cloud, and the weeping shidare-zakura
+  with blossom hanging in curtains (`-s` / press `s`). Every tree draws its own proportions, lean and limbs from
+  ranges true to its form, so no two match; `-s random` changes form each regrow
 - Petals drift down on a wandering wind, settle on the ground, and fade
-- Auto-adjusts to any terminal size, regenerates on resize
+- Detail mode (`-d` / press `d`): a fully branched tree in half-block pixels,
+  its limbs grown by space colonisation so they fork low, spread and taper
+  into twigs carrying clusters of blossom, with petals falling half a cell at
+  a time
+- Keeps its proportions at any terminal size, from a 30×12 split to a full
+  screen, and regenerates on resize
 - Written in C99 + ncurses, low CPU (default 20 FPS)
 - 15 blossom color palettes (`-c` / press `c`)
 - [Live keyboard shortcuts](#shortcuts) for every setting — palette, petals,
   wind, speed, ASCII and flat mode, all without restarting
 - Matching HTML demo in [`web/`](web/)
+
+## What's new in 3.0
+
+- **Three tree forms.** Somei-yoshino (the default), a full-bloom bush, and the
+  weeping shidare-zakura — `-s` or press `s`; `-s random` picks a new one each
+  regrow.
+- **Detail mode.** `-d` or press `d` for a fully branched tree in half-block
+  pixels. Off by default, so plain `csakura` stays the classic yoshino.
+- **Any size.** The tree keeps its proportions from a 30×12 split to a full
+  screen.
 
 ## What's new in 2.1
 
@@ -131,6 +150,10 @@ csakura [options]
   -p NUM    petal density, 1-10 (default: 5)
   -w NUM    wind strength, 0-10 (default: 1)
   -c NAME   blossom palette (default: sakura)
+  -s STYLE  tree form: yoshino, bush, shidare (weeping), or
+            random for a new one each regrow (default: yoshino)
+  -d        detail mode: a finer, fully branched tree drawn
+            in half-block pixels (needs 256 colours)
   -a        ASCII glyphs only (no unicode blossoms)
   -t        flat mode: never paint cell backgrounds, so a
             transparent terminal shows through the canopy
@@ -148,10 +171,14 @@ palettes:
 Examples:
 
 ```sh
-csakura                 # default
+csakura                 # default: yoshino, not detailed
 csakura -f 12 -p 3      # chill / low CPU (nice in a side pane)
 csakura -p 10 -w 6      # windy petal storm
 csakura -c mint         # mint palette
+csakura -s shidare      # weeping cherry
+csakura -d -s bush      # detailed, in full bloom
+csakura -s random       # a different form every regrow
+csakura -d              # detail mode, a fully branched pixel tree
 csakura -t              # let a transparent terminal show through
 csakura -H 235          # match the shadow to your own background
 csakura -H none         # shadow unpainted, blossom still shaded
@@ -166,6 +193,8 @@ Everything is tunable live — you never need to restart to try a setting.
 | `q`/`Esc` | quit                                                  |
 | `r`       | regrow the tree (new shape every time)                |
 | `c` / `C` | next / previous color palette (15 of them)            |
+| `s`       | next tree form — yoshino / bush / shidare / random    |
+| `d`       | toggle detail mode — fully branched half-block tree   |
 | `p` / `P` | more / fewer petals                                   |
 | `w` / `W` | more / less wind                                      |
 | `+` / `-` | faster / slower                                       |
@@ -181,8 +210,11 @@ panel behind the faint ⋮ in the corner.
 
 Open [`web/index.html`](web/index.html) in a browser for the same animation.
 The faint ⋮ in the corner opens the full set of controls — palette, petal
-density, wind, speed, ASCII glyphs and flat mode — and the terminal keys all
-work too (`r` `c`/`C` `a` `t` `p`/`P` `w`/`W` `+`/`-`). Settings persist across
+density, wind, speed, tree form, ASCII glyphs, flat mode and detail mode — and
+the terminal keys all work too (`r` `c`/`C` `s` `d` `a` `t` `p`/`P` `w`/`W`
+`+`/`-`).
+The cell size follows the window, so a phone or a small window gets the same
+detailed tree as a desktop, just drawn smaller. Settings persist across
 visits. You can also enable GitHub Pages on the `/web` folder for a live demo.
 
 The bottom-left corner shows the running total of repository clones, counted up
